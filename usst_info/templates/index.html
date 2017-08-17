@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "head.html" %}
+<body>
+  <!--导航栏-->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!--头部Jelly标识-->
+      <div class="navbar-header">
+        <!--小屏设备（width<768px）隐藏登录标签以及个人信息-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user_info">
+          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+        </button>
+        <a href="/" class="navbar-brand">Jelly</a>
+      </div>
+      <!--登录标签以及个人信息-->
+      <div class="collapse navbar-collapse" id="user_info">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="linkin.html">LinkIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--logo以及搜索框-->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 center">
+        <img src="/static/images/jelly_logo.png" alt="jelly">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 center">
+        <!--搜索表单-->
+        <form class="form-inline" action="/search" method="get">
+          <input type="search" id="q" name="q" class="search-in">
+          <input type="submit" id="query_btn" value="Search" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--推荐内容-->
+  <div class="container">
+    
+  </div>
+  {% include "footer.html" %}
+</body>
+</html>

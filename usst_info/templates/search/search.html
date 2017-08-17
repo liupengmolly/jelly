@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load highlight %}
+<html lang="en">
+{% include "head.html" %}
+<body>
+  <!--导航栏，带搜索表单-->
+  <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-collapse" data-toggle="collapse" data-target="#user_info">
+          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+        </button>
+        <a href=".." class="navbar-brand">Jelly</a>
+      </div>
+      <div class="collapse navbar-collapse" id="user_info">
+        <ul class="nav navbar navbar-right">
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 center">
+        <form class="form-inline" action="/search" method="get">
+          <input type="search"  id="q" name="q" class="search-in">
+          <input type="submit" id="query_btn" value="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--搜索结果展示模块-->
+  <section class="result">
+    
+  </section>
+  <!--右边推荐模块-->
+  <aside class="">
+
+  </aside>
+{% if query %}
+<!--    <h3>结果</h3>  -->
+    <p></p>
+    {% for result in page.object_list %}
+            <div id="rslt_panel" class="result animated fadeInUp">
+            <div class="result-head">
+            <!-- <span align="center" class="animated" id="{{ result.object.url }}" onclick="article_details(this)">{{ result.object.title }}</span>  -->
+            <span align="center" class="animated"><a href="{{ result.object.url }}" id="{{ result.object.id }}" onclick="glances_add(this)">{% highlight result.object.title with query css_class "found" %}</a></span>
+            </div>
+            <p></p>
+            <div class="result-body">
+                <a class="">{% highlight result.text with query css_class "keyword" %}</a>
+            </div>
+            <div class="result-footer">
+                {% if result.object.download == 1 %}
+                    <span style="color:DarkViolet;">含下载&nbsp;</span>
+                {% endif %}
+                <span>{{ result.object.site }}&nbsp;</span>
+                <span>{{ result.object.pubtime }}&nbsp;</span>
+                <span>浏览:{{ result.object.glances }}</span>
+            </div>
+            </div>
+    {% empty %}
+        <p>没有结果发现.</p>
+    {% endfor %}
+
+{% if page.has_previous or page.has_next %}
+    <div align="center">
+        {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}<<<{% if page.has_previous %}</a>{% endif %}
+           <select class="" value="{{ i }}">
+               {% for i in paginator.page_range %}
+                <option href="?q={{ query }}&page={{ i }}">{{ i }}</option>
+               {% endfor %}
+           </select>
+        {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}>>>{% if page.has_next %}</a>{% endif %}<i class="fa fa-arrow-right" ></i>
+    </div>
+{% endif %}
+{% else %}
+{# Show some example queries to run, maybe query syntax, something else? #}
+{% endif %}
+</body>
+</html>

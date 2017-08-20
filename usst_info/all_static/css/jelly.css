@@ -31,3 +31,56 @@ img[alt="404"] {
 .search-in {
   width: 70%;
 }
+
+/* 基本样式
+   */
+hr {
+  background-color: #d1d1d1;
+  height: 1px;
+}
+a:link {
+  font-size: 1.2em;
+  color: #4a5dec;
+}
+a:visited {
+  color: #d50cb6;
+}
+
+.keyword {
+  color: red;
+}
+
+@media screen and (min-width:768px) {
+  section {
+    width: 700px;
+    margin-left: 70px;
+  }
+
+  .oneofresults {
+    padding-bottom: 15px;
+  }
+  .oneofresults:hover {
+    background-color: #e0eeee;
+  }
+
+  aside {
+    height: 300px;
+    width: 300px;
+    left: 800px;
+    top: 50px;
+    position: absolute;
+  }
+}
+
+@media screen and (max-width:767px) {
+  section {
+    width: 400px;
+    margin: 0 auto;
+  }
+  .oneofresults {
+    padding-bottom: 15px;
+  }
+  .oneofresults:hover {
+    background-color: #e0eeee;
+  }
+}

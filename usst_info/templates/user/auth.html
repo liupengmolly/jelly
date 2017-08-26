@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "head.html" %}
+<body>
+{% include "nav-with-form.html" %}
+<!-- 登录表单 -->
+<div class="linkin">
+  <ul>
+    <li id="signin-li" class="signin-li">登录</li>
+    <li id="signup-li" class="signup-li">注册</li>
+  </ul>
+  <!-- 登录表单 -->
+  <div class="signin">
+    <form id="signin" method="post" action="signin/">{% csrf_token %}
+      <div class="form-group">
+        <input class="form-control" type="text" id="signin_ac" name="signin_ac" aria-label="学号" placeholder="学号"><p id="signin_ac_note"></p>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" id="signin_pwd" name="signin_pwd" aria-label="密码" placeholder="密码">
+      </div>
+      <div class="form-group">
+        <input class="form-control btn btn-primary" type="submit" id="signin_sub" name="signin_sub" value="登录">
+      </div>
+    </form>
+    <a href="find_passwd/">忘记密码？</a>
+  </div>
+  <!-- 注册表单 -->
+  <div class="signup">
+    <form id="signup" method="post" action="signup/">{% csrf_token %}
+      <div class="form-group">
+        <input class="form-control" type="text" id="signup_ac" name="signup_ac" placeholder="学号">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" id="signup_pwd" name="signup_pwd" placeholder="密码">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" id="signup_name" name="signup_name" placeholder="用户名">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="email" id="signup_email" name="signup_email" placeholder="邮箱">
+      </div>
+      <div class="form-group">
+        <label>您的身份：</label>
+        <select name="signup_degree">
+          <option value="1">本科生</option>
+          <option value="0">研究生</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>入学年份：</label>
+        <select class="" name="signup_grade" id="signup_grade">
+        </select>
+      </div>
+      <div class="form-group">
+        <label>专业类别：</label>
+        <select name="signup_major" id="signup_major">
+        </select>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn btn-primary" type="submit" id="signup_sub" name="signup_sub" value="注册">
+      </div>
+    </form>
+  </div>
+</div>
+{% include "footer.html" %}
+</body>
+<script src="/static/js/sign.js" charset="utf-8"></script>
+</html>

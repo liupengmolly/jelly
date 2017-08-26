@@ -3,36 +3,10 @@
 <html lang="en">
 {% include "head.html" %}
 <body>
-  <!--导航栏，带搜索表单-->
-  <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-collapse" data-toggle="collapse" data-target="#user_info">
-          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-        </button>
-        <a href=".." class="navbar-brand">Jelly</a>
-      </div>
-      <div class="collapse navbar-collapse" id="user_info">
-        <ul class="nav navbar navbar-right">
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 col-lg-6 col-md-offset-1 col-lg-offset-1">
-        <form class="form-inline" action="/search" method="get">
-          <input type="search"  id="q" name="q" class="search-in">
-          <input type="submit" id="query_btn" value="Search">
-        </form>
-      </div>
-    </div>
-  </div>
+  {% include "nav-with-form.html" %}
   <!--搜索结果展示模块-->
-
   <section class="result">
     {% if query %}
-    <hr>
     {% for result in page.object_list %}
     <div class="oneofresults">
       <div class="result-head">
@@ -52,27 +26,42 @@
 
     </div>
     {% empty %}
+
     <p>没有结果发现</p>
     {% endfor %}
+    {% endif %}
   </section>
-  <!--右边推荐模块-->
-  <aside class="recommend">
-    fdafd
+  <!--推荐模块-->
+  <aside class="commend">
+
   </aside>
 
-{% if page.has_previous or page.has_next %}
-    <div align="center">
-        {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}<<<{% if page.has_previous %}</a>{% endif %}
-           <select class="" value="{{ i }}">
-               {% for i in paginator.page_range %}
-                <option href="?q={{ query }}&page={{ i }}">{{ i }}</option>
-               {% endfor %}
-           </select>
-        {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}>>>{% if page.has_next %}</a>{% endif %}<i class="fa fa-arrow-right" ></i>
+  <!-- 分页模块 -->
+  {% if page.has_previous or page.has_next %}
+  <section class="center">
+    {% if page.has_previous %}
+    <a href="?q={{ query }}&page={{ page.previous_page_number }}">
+      <span class="glyphicon glyphicon-arrow-left">上一页</span>
+    </a>
+    {% endif %}
+    <select>
+      {% for i in paginator.page_range %}
+      <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+    </select>
+    {% if page.has_next %}
+    <a href="?q={{ query }}&page={{ page.next_page_number }}">
+      下一页<span class="glyphicon glyphicon-arrow-right"></span>
+    </a>
+    {% endif %}
+  </section>
+  {% endif %}
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container-fluid">
+      <hr>
+      <p class="center">&copy;Jelly 2017</p>
     </div>
-{% endif %}
-{% else %}
-{# Show some example queries to run, maybe query syntax, something else? #}
-{% endif %}
+  </footer>
 </body>
 </html>

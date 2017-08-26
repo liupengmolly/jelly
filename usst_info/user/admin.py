@@ -1,6 +1,5 @@
 from django.contrib import admin
-
+from .models import Userinfo
 # Register your models here.
-from .models import Jwcinfo
 
-admin.site.register(Jwcinfo)
+admin.site.register(Userinfo)

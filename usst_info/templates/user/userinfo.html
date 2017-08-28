@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  {% include "head.html" %}
+  <link rel="stylesheet" href="/static/css/userinfo.css">
 </head>
 <body>
-
+  <div class="main">
+    {% inlcude "nav-with-form.html" %}
+    <section class="user">
+    </section>
+  </div>
+  {% include "footer.html" %}
 </body>
 </html>

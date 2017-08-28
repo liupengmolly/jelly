@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 {% load highlight %}
 <html lang="en">
-{% include "head.html" %}
+<head>
+  {% include "head.html" %}
+  <link rel="stylesheet" href="/static/css/result.css">
+</head>
 <body>
+<div class="main">
   {% include "nav-with-form.html" %}
   <!--搜索结果展示模块-->
   <section class="result">
@@ -30,38 +34,30 @@
     <p>没有结果发现</p>
     {% endfor %}
     {% endif %}
+
+    <!-- 分页模块 -->
+    {% if page.has_previous or page.has_next %}
+    <section class="center">
+      {% if page.has_previous %}
+      <a href="?q={{ query }}&page={{ page.previous_page_number }}">上一页</a>
+      {% endif %}
+      <select>
+        {% for i in paginator.page_range %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+      </select>
+      {% if page.has_next %}
+      <a href="?q={{ query }}&page={{ page.next_page_number }}">下一页</a>
+      {% endif %}
+    </section>
+    {% endif %}
   </section>
   <!--推荐模块-->
   <aside class="commend">
 
   </aside>
-
-  <!-- 分页模块 -->
-  {% if page.has_previous or page.has_next %}
-  <section class="center">
-    {% if page.has_previous %}
-    <a href="?q={{ query }}&page={{ page.previous_page_number }}">
-      <span class="glyphicon glyphicon-arrow-left">上一页</span>
-    </a>
-    {% endif %}
-    <select>
-      {% for i in paginator.page_range %}
-      <option value="{{ i }}">{{ i }}</option>
-      {% endfor %}
-    </select>
-    {% if page.has_next %}
-    <a href="?q={{ query }}&page={{ page.next_page_number }}">
-      下一页<span class="glyphicon glyphicon-arrow-right"></span>
-    </a>
-    {% endif %}
-  </section>
-  {% endif %}
+</div>
   <!-- 页脚 -->
-  <footer class="footer">
-    <div class="container-fluid">
-      <hr>
-      <p class="center">&copy;Jelly 2017</p>
-    </div>
-  </footer>
+  {% include "footer.html" %}
 </body>
 </html>

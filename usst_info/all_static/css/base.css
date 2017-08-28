@@ -45,6 +45,10 @@ a:link {
   color: red;
 }
 
+.search-in {
+  width: 70%;
+}
+
 @media screen and (min-width: 768px) {
   nav {
     min-width: 768px;

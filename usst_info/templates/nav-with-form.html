@@ -1,4 +1,14 @@
 <!--导航栏，带搜索表单-->
+<script type="text/javascript">
+    function search(){
+        document.form1.action="/search";
+        document.form1.submit();
+    }
+    function ask(){
+        document.form1.action="/qa/ask";
+        document.form1.submit();
+    }
+</script>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!--头部Jelly标识-->
@@ -9,14 +19,16 @@
       </button>
       <a href="/" class="navbar-brand">Jelly</a>
     </div>
-    <form class="navbar-form pull-left form-in-nav" action="/search" method="get">
+    <form name="form1" class="navbar-form pull-left form-in-nav" method="get">
       <input type="search" id="q" name="q" class="search-in">
-      <input type="submit" id="query-btn" value="Search" class="">
+      <input id="jelly_search_btn" type="button" value="搜索" onclick="search()">
+      <input id="jelly_ask_btn" type="button" value="提问" onclick="ask()">
     </form>
     <!--登录标签以及个人信息-->
     <div class="collapse navbar-collapse" id="user_info">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/user/">LinkIn</a></li>
+        <li><a href="{{ url }}">{{ name }}</a></li>
       </ul>
     </div>
   </div>

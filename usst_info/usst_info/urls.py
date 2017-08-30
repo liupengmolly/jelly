@@ -18,7 +18,7 @@ from django.contrib import admin
 from search import views
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.index,name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^search/',include('search.urls')),
     url(r'^user/', include('user.urls')),

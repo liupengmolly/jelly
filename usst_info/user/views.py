@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from user.models import Userinfo,UserManager
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,SESSION_KEY
-from user.auth import MyBackend
+from usst_info.settings import colleges,majors
 # Create your views here.
 
 
@@ -22,6 +22,7 @@ def auth(request):
 def signin(request):
     """
     登录验证
+    login函数使用django默认的函数，包括身份验证模块
 
     :param request:
     :return:
@@ -31,7 +32,7 @@ def signin(request):
     user=authenticate(st_num=st_num,passwd=passwd)
     if user:
         login(request,user)
-        return render(request,'index.html',{'url':'/userinfo','name':user.username})
+        return render(request,'index.html',{'url':'/user/personal_info','name':user.username})
     else:
         return render(request,'404.html')
 
@@ -54,6 +55,38 @@ def signup(request):
     usermanager=UserManager()
     user=usermanager.create_user(st_num,password,username,email,under_graduate,grade,college,major)
     return render(request,'user/auth.html')
+
+def user_info(request,user_id):
+    """
+    用户详情页
+    :param request:
+    :param user_id:
+    :return:
+    """
+    user=Userinfo.objects.get(pk=user_id)
+    degree = '本科生' if user.under_graduate else '研究生'
+    role = '管理员' if user.is_admin else ''
+    college = colleges[user.college]
+    major = majors[user.college][user.major]
+    return render(request,'user/user_info.html',{'user':user,'degree':degree, 'role':role,
+                                            'college':college,'major':major})
+
+def personal_info(request):
+    """
+    用户个人中心
+    由于用户模型的很多信息不是直接存储的字符串信息，所以需要转换
+    :param request:
+    :return:
+    """
+
+    user=Userinfo.objects.get(pk=request.session[SESSION_KEY])
+    degree='本科生' if user.under_graduate else '研究生'
+    role='管理员' if user.is_admin else ''
+    college=colleges[user.college]
+    major=majors[user.college][user.major]
+
+    return render(request, 'user/personal_info.html', {'degree':degree, 'role':role,
+                                            'college':college,'major':major})
 
 def find_passwd(request):
     return render(request,'user/find_passwd.html')

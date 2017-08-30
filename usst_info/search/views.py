@@ -1,5 +1,7 @@
+# -*- encoding:utf-8 -*-
 from django.shortcuts import render
-
+from django.contrib.auth import SESSION_KEY
+from user.models import Userinfo
 # Create your views here.
 
 
@@ -10,4 +12,9 @@ def index(request):
     :param request:
     :return:
     """
-    return render(request,'index.html')
+    user=Userinfo.objects.get(pk=request.session[SESSION_KEY])
+    if user:
+        info={'url':'/user/personal_info','name':user.username}
+    else:
+        info={'url':'/user','name':'登录/注册'}
+    return render(request,'index.html',info)

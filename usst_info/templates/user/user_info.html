@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "head.html" %}
+</head>
+<body>
+  {% include "nav-with-form.html" %}
+  <div class="main">
+    <div class="userinfo">
+      用户详情
+      <p>学号:{{ user.st_num }}</p>
+      <p>昵称:{{ user.username }}&nbsp;{{ role }}&nbsp;{{ degree }}</p>
+      <p>邮箱: {{ user.email }}</p>
+      <p>年级：{{ user.grade }}</p>
+      <p>学院：{{ college }}</p>
+      <p>专业：{{ major }}</p>
+    </div>
+  </div>
+  {% include "footer.html" %}
+</body>
+</html>

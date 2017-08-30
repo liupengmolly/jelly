@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from user.models import Userinfo
+from django.urls import reverse
 
 class Question(models.Model):
     """
@@ -28,6 +29,8 @@ class Question(models.Model):
     categories = models.TextField()
     if_delete = models.IntegerField(default=0)
 
+    def get_absolute_url(self):
+        return reverse('qa:question_detail',kwargs={'pk':self.pk})
     class Meta:
         db_table = 'question'
 

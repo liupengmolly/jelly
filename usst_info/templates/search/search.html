@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load highlight %}
+<html lang="en">
+<head>
+  {% include "head.html" %}
+  <link rel="stylesheet" href="/static/css/result.css">
+</head>
+<body>
+<div class="main">
+  {% include "nav-with-form.html" %}
+  <!--搜索结果展示模块-->
+  <section class="result">
+    {% if query %}
+    {% for result in page.object_list %}
+    <div class="oneofresults">
+      <div class="result-head">
+        <a href="{{ result.url }}" id="{{ result.id }}">{% highlight result.title with query css_class "found" %}</a>
+      </div>
+      <div class="result-body">
+        <p>{% highlight result.text with query css_class "keyword" %}</p>
+      </div>
+      <div class="result-footer">
+        {% if result.download == 1 %}
+        <span>含下载&nbsp;</span>
+        {% endif %}
+        <span>{{ result.site }}&nbsp;</span>
+        <span>{{ result.pubtime }}&nbsp;</span>
+        <span>浏览：{{ result.glances }}</span>
+      </div>
+
+    </div>
+    {% empty %}
+
+    <p>没有结果发现</p>
+    {% endfor %}
+    {% endif %}
+
+    <!-- 分页模块 -->
+    {% if page.has_previous or page.has_next %}
+    <section class="center">
+      {% if page.has_previous %}
+      <a href="?q={{ query }}&page={{ page.previous_page_number }}">上一页</a>
+      {% endif %}
+      <select>
+        {% for i in paginator.page_range %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+      </select>
+      {% if page.has_next %}
+      <a href="?q={{ query }}&page={{ page.next_page_number }}">下一页</a>
+      {% endif %}
+    </section>
+    {% endif %}
+  </section>
+  <!--推荐模块-->
+  <aside class="commend">
+
+  </aside>
+</div>
+  <!-- 页脚 -->
+  {% include "footer.html" %}
+</body>
+</html>

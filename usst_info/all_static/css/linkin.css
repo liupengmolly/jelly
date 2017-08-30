@@ -1,0 +1,87 @@
+@media screen and (min-width: 768px) {
+  .linkin {
+    position: relative;
+    background-color: #fff;
+    width: 370px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-width: 1px;
+    border-color: #ddd;
+    border-style: solid;
+  }
+
+  .linkin > ul {
+    line-height: 40px;
+    width: 100%;
+    list-style: none;
+  }
+  .linkin > ul > li {
+    font-size: 2rem;
+    width: 50%;
+    float: left;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .linkin > ul > .signup-li {
+    background-color: #4a5dec;
+  }
+
+  .signin {
+    padding: 0 30px;
+  }
+  .signup {
+    display: none;
+    padding: 0 30px;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .linkin {
+    position: relative;
+    background-color: #fff;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-width: 1px;
+    border-color: #ddd;
+    border-style: solid;
+  }
+
+  .linkin > ul {
+    line-height: 40px;
+    width: 100%;
+    list-style: none;
+  }
+  .linkin > ul > li {
+    font-size: 2rem;
+    width: 50%;
+    float: left;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .linkin > ul > .signup-li {
+    background-color: #4a5dec;
+  }
+
+  .signin {
+    padding: 0 30px;
+  }
+  .signup {
+    display: none;
+    padding: 0 30px;
+  }
+
+  select {
+    width: 100%;
+  }
+}

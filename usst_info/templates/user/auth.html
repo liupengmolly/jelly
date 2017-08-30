@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "head.html" %}
+  <link rel="stylesheet" href="/static/css/linkin.css">
+</head>
+<body>
+<div class="main">
+{% include "nav-with-form.html" %}
+<!-- 登录表单 -->
+<div class="linkin">
+  <ul>
+    <li id="signin-li" class="signin-li">登录</li>
+    <li id="signup-li" class="signup-li">注册</li>
+  </ul>
+  <!-- 登录表单 -->
+  <div class="signin">
+    <form id="signin" method="post" action="signin/">{% csrf_token %}
+      <div class="form-group">
+        <input class="form-control" type="text" id="signin_ac" name="signin_ac" aria-label="学号" placeholder="学号"
+        maxlength="11" required><p id="signin_ac_note"></p>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="password" id="signin_pwd" name="signin_pwd" aria-label="密码" placeholder="密码"
+        maxlength="16" required>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn btn-primary" type="submit" id="signin_sub" name="signin_sub" value="登录">
+      </div>
+    </form>
+    <a href="find_passwd/">忘记密码？</a>
+  </div>
+  <!-- 注册表单 -->
+  <div class="signup">
+    <form id="signup" class="form-horizontal" method="post" action="signup/">{% csrf_token %}
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">学号：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <input class="form-control" type="text" id="signup_ac" name="signup_ac" placeholder="学号" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">密码：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <input class="form-control" type="password" id="signup_pwd" name="signup_pwd" placeholder="密码" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">昵称：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <input class="form-control" type="text" id="signup_name" name="signup_name" placeholder="用户名" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">邮箱：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <input class="form-control" type="email" id="signup_email" name="signup_email" placeholder="邮箱" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">身份：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <select name="signup_degree" id="signup_degree">
+            <option value="1">本科生</option>
+            <option value="0">研究生</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">年级：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <select class="" name="signup_grade" id="signup_grade">
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">学院：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <select name="signup_college" id="signup_college">
+            <option value="1">能源与动力工程学院</option>
+            <option value="2">光电信息与计算机工程学院</option>
+            <option value="3">管理学院</option>
+            <option value="4">机械学院</option>
+            <option value="5">外语学院</option>
+            <option value="6">环境与建筑学院</option>
+            <option value="7">医疗器械与食品学院</option>
+            <option value="8">出版印刷与艺术学院</option>
+            <option value="9">理学院</option>
+            <option value="10">中德学院</option>
+            <option value="11">中英国际学院</option>
+            <option value="12">材料科学与工程学院</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 col-sm-3 col-md-3 control-label">专业：</label>
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <select name="signup_major" id="signup_major">
+            <option value='0'>未分专业</option>
+            <option value='1'>过程装备与控制工程</option>
+            <option value='2'>新能源科学与工程</option>
+            <option value='3'>能源与动力工程</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn btn-primary" type="submit" id="signup_sub" name="signup_sub" value="注册">
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+{% include "footer.html" %}
+</body>
+<script src="/static/js/sign.js"></script>
+</html>

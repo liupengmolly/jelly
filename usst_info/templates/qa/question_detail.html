@@ -1,27 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% include "head.html" %}
-  <link rel="stylesheet" href="/static/css/question_detail.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-  {% include "nav-with-form.html" %}
-  <div class="main">
-    <div class="content">
-      <div class="left">
-        <div class="question">
-          <p>提问者：<a href="{% url 'user:user_info' user.id %}">{{ user.username }}</a></p>
-          <p>问题标题：{{ object.title }}</p>
-          <p>问题描述：{{ object.content }}</p>
-          <p>问题标签：{{ object.categories }}</p>
-          <p>提问时间：{{ object.pubtime }}</p>
-        </div>
-      </div>
-      <div class="right">
-        <!-- 推荐区？ -->
-      </div>
-    </div>
-  </div>
-  {% include "footer.html" %}
+<p>提问者：<a href="{% url 'user:user_info' user.id %}">{{ user.username }}</a></p>
+<p>问题标题：{{ object.title }}</p>
+<p>问题描述：{{ object.content }}</p>
+<p>问题标签：{{ object.categories }}</p>
+<p>提问时间：{{ object.pubtime }}</p>
 </body>
 </html>

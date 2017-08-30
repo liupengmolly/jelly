@@ -1,63 +1,69 @@
 <!DOCTYPE html>
-{% load highlight %}
 <html lang="en">
 <head>
-  {% include "head.html" %}
-  <link rel="stylesheet" href="/static/css/result.css">
+    <meta charset="UTF-8">
+    <title></title>
 </head>
 <body>
-<div class="main">
-  {% include "nav-with-form.html" %}
-  <!--搜索结果展示模块-->
-  <section class="result">
-    {% if query %}
-    {% for result in page.object_list %}
-    <div class="oneofresults">
-      <div class="result-head">
-        <a href="{{ result.url }}" id="{{ result.id }}">{% highlight result.title with query css_class "found" %}</a>
-      </div>
-      <div class="result-body">
-        <p>{% highlight result.text with query css_class "keyword" %}</p>
-      </div>
-      <div class="result-footer">
-        {% if result.download == 1 %}
-        <span>含下载&nbsp;</span>
-        {% endif %}
-        <span>{{ result.site }}&nbsp;</span>
-        <span>{{ result.pubtime }}&nbsp;</span>
-        <span>浏览：{{ result.glances }}</span>
-      </div>
-
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function search(){
+        document.form1.action="";
+        document.form1.submit();
+    }
+    function ask(){
+        document.form1.action="../qa/ask";
+        document.form1.submit();
+    }
+</script>
+<form name="form1" method="get" action="">
+    <div>
+        <input id="q" name="q" type="search">
     </div>
+    <div>
+        <input id="jelly_search_btn" type="button" value="搜索" onclick="search()">
+        <input id="jelly_ask_btn" type="button" value="提问" onclick="ask()">
+    </div>
+</form>
+{% if query %}
+<!--    <h3>结果</h3>  -->
+    <p></p>
+    {% for result in page.object_list %}
+            <div id="rslt_panel" class="result animated fadeInUp">
+            <div class="result-head">
+            <!-- <span align="center" class="animated" id="{{ result.object.url }}" onclick="article_details(this)">{{ result.object.title }}</span>  -->
+            <span align="center" class="animated"><a href="{{ result.object.url }}" id="{{ result.object.id }}" onclick="glances_add(this)">{{ result.object.title }}</a></span>
+            </div>
+            <p></p>
+            <div class="result-body">
+                <a class="">{% highlight result.text with query css_class "keyword" %}</a>
+            </div>
+            <div class="result-footer">
+                {% if result.object.download == 1 %}
+                    <span style="color:DarkViolet;">含下载&nbsp;</span>
+                {% endif %}
+                <span>{{ result.object.site }}&nbsp;</span>
+                <span>{{ result.object.pubtime }}&nbsp;</span>
+                <span>浏览:{{ result.object.glances }}</span>
+            </div>
+            </div>
     {% empty %}
-
-    <p>没有结果发现</p>
+        <p>没有结果发现.</p>
     {% endfor %}
-    {% endif %}
 
-    <!-- 分页模块 -->
-    {% if page.has_previous or page.has_next %}
-    <section class="center">
-      {% if page.has_previous %}
-      <a href="?q={{ query }}&page={{ page.previous_page_number }}">上一页</a>
-      {% endif %}
-      <select>
-        {% for i in paginator.page_range %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-      </select>
-      {% if page.has_next %}
-      <a href="?q={{ query }}&page={{ page.next_page_number }}">下一页</a>
-      {% endif %}
-    </section>
-    {% endif %}
-  </section>
-  <!--推荐模块-->
-  <aside class="commend">
-
-  </aside>
-</div>
-  <!-- 页脚 -->
-  {% include "footer.html" %}
+{% if page.has_previous or page.has_next %}
+    <div align="center">
+        {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}<<<{% if page.has_previous %}</a>{% endif %}
+           <select class="" value="{{ i }}">
+               {% for i in paginator.page_range %}
+                <option href="?q={{ query }}&page={{ i }}">{{ i }}</option>
+               {% endfor %}
+           </select>
+        {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}>>>{% if page.has_next %}</a>{% endif %}<i class="fa fa-arrow-right" ></i>
+    </div>
+{% endif %}
+{% else %}
+{# Show some example queries to run, maybe query syntax, something else? #}
+{% endif %}
 </body>
 </html>

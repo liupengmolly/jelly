@@ -199,19 +199,7 @@ class Userinfo(models.Model):
     objects=UserManager()
 
     def __str__(self):
-        return self.st_num+':'+self.username
-
-    def get_user(self, id):
-        try:
-            return self.objects.get(pk=id)
-        except self.DoesNotExist:
-            return None
-
-    def get_user_by_st_num(self,st_num):
-        try:
-            return Userinfo.objects.get(st_num=st_num)
-        except Userinfo.DoesNotExist:
-            return None
+        return self.st_num+','+self.username
 
     def set_passwd(self, raw_passwd):
         self.passwd = make_password(raw_passwd)

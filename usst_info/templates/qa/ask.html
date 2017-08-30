@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% include "head.html" %}
-  <link rel="stylesheet" href="/static/css/ask.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-  {% include "nav-with-form.html" %}
-  <div class="main">
-    <div class="container content">
-      <div class="row">
-        <div class="col-xs-10 col-sm-10 col-md-8">
-          <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-              <p>问题名：{{ form.title }}</p>
-            </div>
-            <div class="form-group">
-              <p>问题描述： {{ form.content }}</p>
-            </div>
-            <div class="form-group">
-              <p>问题分类：{{ form.categories }}</p>
-            </div>
-            <div class="form-group">
-              <input type="submit" name="" value="提交">
-              <input type="button" name="" value="返回">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  {% include "footer.html" %}
+<form method="post">
+    {% csrf_token %}
+    <p>问题名：{{ form.title }}</p>
+    <p>问题描述： {{ form.content }}</p>
+    <p>问题分类：{{ form.categories }}</p>
+    <p><input type="submit" value="提交" /></p>
+</form>
 </body>
 </html>

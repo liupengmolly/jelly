@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate,login,SESSION_KEY
 from usst_info.settings import colleges,majors
 # Create your views here.
 
-
 def auth(request):
     """
     网站的首页，无需登录即可进入，可以搜索、登录、注册、进入用户中心、查看推荐信息等

@@ -10,7 +10,7 @@ class Ask(CreateView):
     model=Question
     template_name = 'qa/ask.html'
     fields=['title','content','categories']
-
+    
     def form_valid(self,form):
         form.instance.asker=self.request.user
         return super(Ask, self).form_valid(form)
@@ -27,3 +27,4 @@ class QuestionDetail(DetailView):
         question=self.get_object()
         context['user']=question.asker
         return context
+

@@ -90,11 +90,11 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jelly',
-        'USER':'uncleofjelly',
-        'PASSWORD':'jelly14mynephew',
-        'HOST':'106.15.44.172',
-        'PORT':'3306',
+        'NAME': '',
+        'USER':'',
+        'PASSWORD':'',
+        'HOST':'',
+        'PORT':'',
     }
 }
 AUTH_USER_MODEL='user.Userinfo'

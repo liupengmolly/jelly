@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>个人主页</title>
+  {% include "components/head.html" %}
+  <link rel="stylesheet" href="/static/css/personal_info.css">
 </head>
 <body>
-<p><a href="{% url 'index' %}">首页</a></p>
-个人主页
-<p>学号:{{ request.user.st_num }}</p>
-<p>昵称:{{ request.user.username }}&nbsp;{{ role }}&nbsp;{{ degree }}</p>
-<p>邮箱: {{ request.user.email }}</p>
-<p>年级：{{ request.user.grade }}</p>
-<p>学院：{{ college }}</p>
-<p>专业：{{ major }}</p>
+  {% include "components/nav-with-form.html" %}
+  <div class="main">
+    <div class="content">
+      <div class="left">
+         <ul class="nav nav-pills nav-stacked">
+           <li role="presentation" class="active" id="aboutme"><a>个人主页</a></li>
+           <li role="presentation" id="collection"><a>我的收藏</a></li>
+         </ul>
+      </div>
+      <div class="right aboutme">
+        <form class="form-horizontal" method="post">
+          <div class="form-group">
+            <label class="control-label col-xs-2 col-sm-2 col-md-2">学号</label>
+            <div class="col-xs-10 col-sm-10 col-md-6">
+              <input id="st_num" class="form-control" type="text" name="st_num" value="{{ user.st_num }}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-2 col-sm-2 col-md-2 control-label">昵称</label>
+            <div class="col-xs-10 col-sm-10 col-md-6">
+              <input id="username" class="form-control" type="text" name="username" value="{{ user.username }}&nbsp;{{ role }}&nbsp;{{ degree }}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-2 col-sm-2 col-md-2 control-label">邮箱</label>
+            <div class="col-xs-10 col-sm-10 col-md-6">
+              <input id="email" class="form-control" type="email" name="email" value="{{ user.email }}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-2 col-sm-2 col-md-2 control-label">年级</label>
+            <div class="col-xs-10 col-sm-10 col-md-6">
+              <input id="grade" class="form-control" type="text" name="grade" value="{{ user.grade }}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-2 col-sm-2 col-md-2 control-label">学院</label>
+            <div class="col-xs-10 col-sm-10 col-md-6">
+              <input id="college" class="form-control" type="text" name="college" value="{{ college }}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-2 col-sm-2 col-md-2 control-label">专业</label>
+            <div class="col-xs-10 col-sm-10 col-md-6">
+              <input id="major" class="form-control" type="text" name="major" value="{{ major }}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-5 col-sm-offset-2 col-sm-5 col-md-offset-2 col-md-3">
+              <input class="form-control btn btn-default" type="submit" name="" value="提交修改" disabled id="submit">
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-3">
+              <input class="form-control btn btn-danger" type="button" name="" value="我想修改" id="change">
+              <input class="form-control btn btn-primary" type="button" name="" value="不想改了" id="undo">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="right collection">
+        <!-- 右边收藏模块 -->
+      </div>
+    </div>
+  </div>
+  {% include "components/footer.html" %}
 </body>
+<script src="/static/js/personal_info.js"></script>
 </html>

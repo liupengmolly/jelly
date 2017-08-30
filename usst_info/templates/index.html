@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Jelly</title>
+  {% include "components/head.html" %}
+  <link rel="stylesheet" href="/static/css/index.css">
 </head>
 <body>
-<a href="{{ url }}">{{ name }}</a>
-<form method="get" action="/search">
-    <div>
-        <input id="q" name="q" type="search">
+  {% include "components/nav-without-form.html" %}
+  <!--logo以及搜索框-->
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 center">
+        <img src="/static/images/jelly_logo.png" alt="jelly">
+      </div>
     </div>
-    <div>
-        <input id="jelly_search_btn" type="submit" value="搜索">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 center">
+        <!--搜索表单-->
+        <form class="form-inline" action="/search" method="get">
+          <input type="search" id="q" name="q" class="search-in">
+          <input type="submit" id="query_btn" value="Search" class="btn btn-primary">
+        </form>
+      </div>
     </div>
-</form>
+  </div>
+  <!--推荐内容-->
+  <div class="container">
+
+  </div>
+</div>
+  {% include "components/footer.html" %}
 </body>
 </html>

@@ -199,7 +199,7 @@ class Userinfo(models.Model):
     objects=UserManager()
 
     def __str__(self):
-        return self.st_num+','+self.username
+        return self.st_num+':'+self.username
 
     def set_passwd(self, raw_passwd):
         self.passwd = make_password(raw_passwd)

@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate,login,SESSION_KEY
 from usst_info.settings import colleges,majors
 # Create your views here.
 
+
 def auth(request):
     """
     网站的首页，无需登录即可进入，可以搜索、登录、注册、进入用户中心、查看推荐信息等
@@ -77,7 +78,6 @@ def personal_info(request):
     :param request:
     :return:
     """
-
     user=Userinfo.objects.get(pk=request.session[SESSION_KEY])
     degree='本科生' if user.under_graduate else '研究生'
     role='管理员' if user.is_admin else ''

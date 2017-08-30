@@ -1,0 +1,68 @@
+@media screen and (min-width: 768px) {
+  .content {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 80px;
+    position: relative;
+  }
+
+  .left {
+    max-width: 30%;
+    min-width: 20%;
+    float: left;
+  }
+
+  .left > ul > li{
+    cursor: pointer;
+  }
+
+  a {
+    font-size: 2rem;
+    color: #aaa;
+  }
+
+  .right {
+    min-width: 70%;
+    max-width: 80%;
+    float: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-left: 40px;
+    border-radius: 5px;
+  }
+
+  #undo, .collection {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .content {
+    width: 100%;
+    margin-top: 80px;
+    position: relative;
+  }
+
+  .left {
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .right {
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .left > ul > li{
+    cursor: pointer;
+  }
+
+  a {
+    font-size: 2rem;
+    color: #aaa;
+  }
+
+  #undo, .collection {
+    display: none;
+  }
+}

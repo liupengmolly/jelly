@@ -1,0 +1,20 @@
+<!--导航栏-->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!--头部Jelly标识-->
+    <div class="navbar-header">
+      <!--小屏设备（width<768px）隐藏登录标签以及个人信息-->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user_info">
+        <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+      </button>
+      <a href="/" class="navbar-brand">Jelly</a>
+    </div>
+    <!--登录标签以及个人信息-->
+    <div class="collapse navbar-collapse" id="user_info">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/user">LinkIn</a></li>
+        <li><a href="{{ url }}">{{ name }}</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

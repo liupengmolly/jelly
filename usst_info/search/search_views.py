@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from haystack.views import SearchView
+
 from .models import Jwcinfo
 from user.models import Userinfo
 from haystack.query import SearchQuerySet,EmptySearchQuerySet,ValuesSearchQuerySet

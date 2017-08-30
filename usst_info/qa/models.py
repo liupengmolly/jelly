@@ -27,11 +27,10 @@ class Question(models.Model):
     content = models.CharField(max_length=10000)
     pubtime = models.DateTimeField(auto_now=True,blank=True)
     categories = models.TextField()
-    if_delete = models.IntegerField(default=0,blank=True)
+    if_delete = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('qa:question_detail',kwargs={'pk':self.pk})
-
     class Meta:
         db_table = 'question'
 

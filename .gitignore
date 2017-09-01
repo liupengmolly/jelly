@@ -1,2 +1,3 @@
 *.pyc
 !.gitignore
+db_settings.py

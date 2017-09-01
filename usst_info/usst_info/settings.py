@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from .db_settings import dbengine,name,user,host,password,port
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -89,12 +90,12 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jelly',
-        'USER':'uncleofjelly',
-        'PASSWORD':'',
-        'HOST':'',
-        'PORT':'3306',
+        'ENGINE': dbengine,
+        'NAME': name,
+        'USER':user,
+        'PASSWORD':password,
+        'HOST':host,
+        'PORT':port,
     }
 }
 AUTH_USER_MODEL='user.Userinfo'

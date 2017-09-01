@@ -24,7 +24,7 @@ class Question(models.Model):
     """
     asker = models.ForeignKey(Userinfo,on_delete=models.PROTECT)
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.CharField(max_length=10000)
     pubtime = models.DateTimeField(auto_now=True,blank=True)
     categories = models.TextField()
     if_delete = models.IntegerField(default=0)

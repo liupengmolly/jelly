@@ -11,10 +11,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from usst_info.usst_info.db_setting import HOST,PASSWORD
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -92,8 +91,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jelly',
         'USER':'uncleofjelly',
-        'PASSWORD':'',
-        'HOST':'',
+        'PASSWORD':PASSWORD,
+        'HOST':HOST,
         'PORT':'3306',
     }
 }
